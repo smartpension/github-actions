@@ -1,0 +1,22 @@
+name: "Heroku release"
+description: "Heroku release"
+inputs:
+    token:
+        description: "Heroku token"
+        required: true
+    app:
+        description: "App name"
+        required: true
+    process:
+        description: "Processes"
+        required: false
+        default: "web"
+outputs:
+    status:
+        description: "The Success/Failure of the action"
+runs:
+    using: 'docker'
+    image: 'Dockerfile'
+    args:
+        - ${{ inputs.token }}
+        - ${{ inputs.app }}
